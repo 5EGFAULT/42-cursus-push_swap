@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:19:08 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 21:39:20 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/05 21:51:49 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,4 @@ void	ft_rrb(t_push *push)
 		tmp->prev = last;
 		tmp->next = NULL;
 	}
-}
-
-void	ft_rrr(t_push *push)
-{
-	ft_rra(push);
-	ft_rrb(push);
 }

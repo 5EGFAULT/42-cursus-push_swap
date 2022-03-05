@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 21:08:21 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/05 21:54:16 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,16 @@ void		ft_d_lstdelfront(t_d_list **lst, void (*del)(void*));
 
 void		ft_sa(t_push *push);
 void		ft_sb(t_push *push);
-void		ft_ss(t_push *push);
 void		ft_pa(t_push *push);
 void		ft_pb(t_push *push);
 void		ft_ra(t_push *push);
 void		ft_rb(t_push *push);
-void		ft_rr(t_push *push);
 void		ft_rra(t_push *push);
 void		ft_rrb(t_push *push);
-void		ft_rrr(t_push *push);
 
 void		free_int(void *content);
 void		*clone_int(void *content);
 void		*new_int(int content);
+void		print_instruction(char *str);
 
 #endif
