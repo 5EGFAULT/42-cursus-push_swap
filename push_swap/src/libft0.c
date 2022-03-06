@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   libft0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:30:18 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 13:01:32 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 14:13:50 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,42 @@ static void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-static int fill(char **splited, const char *s, int len, int j)
+static void	free_ft_split_inter(char ***splited, int j)
 {
-
-	splited[j] = (char *) malloc(len + 1);
-	while (!splited[j])
+	while (!(*splited)[j - 1])
 	{
-		free(splited[j]);
-		if (j < 0)
+		free((*splited)[j - 1]);
+		if (--j == 0)
 		{
-			free(splited);
-			return (0);
+			free((*splited));
+			*splited = NULL;
+			return ;
 		}
 	}
-	splited[j] = ft_memcpy(splited[j], s, len);
-	splited[j][len] = '\0';
-	return (1);
+}
+
+static void	ft_split_inter(char ***splited, const char *s, char c)
+{
+	int	j;
+	int	d;
+	int	i;
+
+	j = 0;
+	d = 0;
+	while (*splited && s[d])
+	{
+		if (s[d] == c && s[d + 1] != c)
+			i = d + 1;
+		if ((s[d++] != c && s[d] == c) || (s[d - 1] != c && s[d] == '\0'))
+		{
+			(*splited)[j++] = (char *) malloc(d - i + 1);
+			free_ft_split_inter(splited, j);
+			if (!*splited)
+				return ;
+			(*splited)[j - 1] = ft_memcpy((*splited)[j - 1], s + i, d - i);
+			(*splited)[j - 1][d - i] = '\0';
+		}
+	}	
 }
 
 char	**ft_split(char const *s, char c)
@@ -80,19 +100,6 @@ char	**ft_split(char const *s, char c)
 	if (!splited)
 		return (0);
 	splited[i] = NULL;
-	d = 0;
-	while (splited && s[d])
-	{
-		if (s[d] == c && s[d + 1] != c)
-			i = d + 1;
-		if ((s[d++] != c && s[d] == c) || (s[d - 1] != c && s[d] == '\0'))
-		{
-			if (!fill(splited, s + i, d - i, j++))
-			{
-				free(splited);
-				return (NULL);
-			}
-		}
-	}	
+	ft_split_inter(&splited, s, c);
 	return (splited);
 }
