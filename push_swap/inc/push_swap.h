@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 10:39:11 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 11:48:21 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,9 @@ void		*new_int(int content);
 void		print_instruction(short inst);
 //!			libft.c
 void		ft_putstr_fd(char *s, int fd);
+char		**ft_split(char const *s, char c);
+//!			init.c
+void		init_push(int count, char **value, t_push *push);
+void		init_stack(t_push *push);
 
 #endif
