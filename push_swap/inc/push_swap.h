@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 17:41:59 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:35:46 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,7 @@ void		init_push(int count, char **value, t_push *push);
 void		init_stack(t_push *push);
 void		error(void);
 void		print_content(void *s);
+//!			sort.c
+void		sort(t_push *push);
+
 #endif
