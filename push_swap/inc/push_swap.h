@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 18:35:46 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 21:09:05 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,13 @@ void		print_content(void *s);
 //!			sort.c
 void		sort(t_push *push);
 
+
+
+
+
+
+
+
+
+void	cmpsacks(t_push *push);
 #endif

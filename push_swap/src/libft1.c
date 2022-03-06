@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 14:12:41 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 15:24:03 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 21:13:54 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,31 @@ int	ft_atoi(const char *str)
 		return (sign * nbr);
 	error();
 	return (0);
+}
+
+void	cmpsacks(t_push *push)
+{
+	t_d_list	*t1;
+	t_d_list	*t2;
+
+	t1 = push->a;
+	t2 = push->b;
+	system("clear");
+	printf("\tA\t|");
+	printf("\tB\t|\n");
+	while (t1 || t2)
+	{
+		if (t1)
+			printf("\t%d\t|",*(int *)(t1->content));
+		else
+			printf("\t\t\t|");
+		if (t2)
+			printf("\t%d\t|\n",*(int *)(t2->content));
+		else
+			printf("\t\t|\n");
+		if (t1)
+			t1 = t1->next;
+		if (t2)
+			t2 = t2->next;
+	}
 }
