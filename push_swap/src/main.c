@@ -6,16 +6,12 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:25:10 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 14:15:48 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 17:39:44 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 #include <stdio.h>
-
-void f(void	*s){
-	printf("%d\n",*(int *)s);
-}
 
 int	main(int argc, char **argv)
 {
@@ -23,22 +19,19 @@ int	main(int argc, char **argv)
 
 	push = malloc(sizeof(t_push));
 	if (!push)
-		return 1;
+		return (1);
 	push->a = NULL;
 	push->b = NULL;
 	init_push(argc, argv, push);
-	//char 	**ss;
-	int		i;
-	
-	i =  ft_atoi(argv[1]);
-	printf("%d \n", i);
-	//ss = ft_split(argv[1], ' ');
-	//i = 0;
-	//while (ss && ss[i])
-	//{
-	//	printf("%s \n", ss[i]);
-	//	i++;
-	//}
-	
+	ft_d_lstiter(push->a, print_content);
+	printf("\n");
+	ft_d_lstiter(push->b, print_content);
+	ft_sa(push);
+	ft_pb(push);
+	print_instruction(NO);
+	printf("\n\n");
+	ft_d_lstiter(push->a, print_content);
+	printf("\n");
+	ft_d_lstiter(push->b, print_content);
 	return (0);
 }

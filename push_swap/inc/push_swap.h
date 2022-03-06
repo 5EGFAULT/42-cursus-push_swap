@@ -6,10 +6,9 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 15:24:38 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 17:41:59 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -52,7 +51,6 @@ void		ft_d_lstadd_back(t_d_list **lst, t_d_list *new);
 void		ft_d_lstdelone(t_d_list *lst, void (*del)(void*));
 void		ft_d_lstclear(t_d_list **lst, void (*del)(void*));
 void		ft_d_lstiter(t_d_list *lst, void (*f)(void *));
-t_d_list	*ft_d_lstmap(t_d_list *lst, void *(*f)(void *), void (*del)(void *));
 void		ft_d_lstdelfront(t_d_list **lst, void (*del)(void*));
 //!			ft_swap.c
 void		ft_sa(t_push *push);
@@ -76,13 +74,9 @@ void		ft_putstr_fd(char *s, int fd);
 char		**ft_split(char const *s, char c);
 //!			libft1.c
 int			ft_atoi(const char *str);
-
 //!			init.c
 void		init_push(int count, char **value, t_push *push);
 void		init_stack(t_push *push);
 void		error(void);
-//!			fill.c
-
-//!			exits.c
-
+void		print_content(void *s);
 #endif
