@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 17:10:17 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 21:05:18 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:38:55 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,6 @@ void	ft_d_lstdelone(t_d_list *lst, void (*del)(void*))
 		return ;
 	del(lst->content);
 	free(lst);
-}
-
-void	ft_d_lstdelfront(t_d_list **lst, void (*del)(void*))
-{
-	t_d_list	*tmp;
-
-	if (!lst || !*lst)
-		return ;
-	tmp = *lst;
-	*lst = (*lst)->next;
-	if (*lst)
-		(*lst)->prev = NULL;
-	ft_d_lstdelone(tmp, del);
 }
 
 void	ft_d_lstclear(t_d_list **lst, void (*del)(void*))
@@ -78,4 +65,17 @@ t_d_list	*ft_d_lstmap(t_d_list *lst, void *(*f)(void *), void (*del)(void *))
 		tmp = tmp->next;
 	}
 	return (new);
+}
+
+void	ft_d_lstdelfront(t_d_list **lst, void (*del)(void*))
+{
+	t_d_list	*tmp;
+
+	if (!lst || !*lst)
+		return ;
+	tmp = *lst;
+	*lst = (*lst)->next;
+	if (*lst)
+		(*lst)->prev = NULL;
+	ft_d_lstdelone(tmp, del);
 }

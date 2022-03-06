@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 21:54:16 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:39:11 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,22 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
-# include "../src/libft/libft.h"
 # include <stdio.h>
+# include <unistd.h>
+
+# define NO		0
+# define SA		1
+# define SB		2
+# define SS		3
+# define PA		4
+# define PB		5
+# define RA		7
+# define RB		8
+# define RR		9
+# define RRA	10
+# define RRB	11
+# define RRR	12
+
 typedef struct s_d_list
 {
 	void			*content;
@@ -28,29 +42,36 @@ typedef struct s_push
 	t_d_list	*b;
 
 }				t_push;
+//!			s_d_list_0.c
 t_d_list	*ft_d_lstnew(void *content);
 void		ft_d_lstadd_front(t_d_list **lst, t_d_list *new);
 int			ft_d_lstsize(t_d_list *lst);
 t_d_list	*ft_d_lstlast(t_d_list *lst);
 void		ft_d_lstadd_back(t_d_list **lst, t_d_list *new);
+//!			s_d_list_1.c
 void		ft_d_lstdelone(t_d_list *lst, void (*del)(void*));
 void		ft_d_lstclear(t_d_list **lst, void (*del)(void*));
 void		ft_d_lstiter(t_d_list *lst, void (*f)(void *));
 t_d_list	*ft_d_lstmap(t_d_list *lst, void *(*f)(void *), void (*del)(void *));
 void		ft_d_lstdelfront(t_d_list **lst, void (*del)(void*));
-
+//!			ft_swap.c
 void		ft_sa(t_push *push);
 void		ft_sb(t_push *push);
+//!			ft_push.c
 void		ft_pa(t_push *push);
 void		ft_pb(t_push *push);
+//!			ft_rotate.c
 void		ft_ra(t_push *push);
 void		ft_rb(t_push *push);
+//!			ft_reverse_rotate.c
 void		ft_rra(t_push *push);
 void		ft_rrb(t_push *push);
-
+//!			utils.c
 void		free_int(void *content);
 void		*clone_int(void *content);
 void		*new_int(int content);
-void		print_instruction(char *str);
+void		print_instruction(short inst);
+//!			libft.c
+void		ft_putstr_fd(char *s, int fd);
 
 #endif

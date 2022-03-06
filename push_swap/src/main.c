@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:25:10 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 21:41:03 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:24:24 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,23 @@ int	main(int argc, char **argv)
 		return 1;
 	push->a = x;
 	push->b = y;
-	ft_d_lstiter(push->b, f);
-	//printf("\n");
 	//ft_d_lstiter(push->b, f);
-	printf("\n\n");
-	ft_rrb(push);
-	ft_rb(push);
-	ft_d_lstiter(push->b, f);
+	////printf("\n");
+	////ft_d_lstiter(push->b, f);
+	//printf("\n\n");
+	//ft_rrb(push);
+	//ft_rb(push);
+	//ft_d_lstiter(push->b, f);
 	//printf("\n");
 	////ft_d_lstiter(push->b, f);
 
+	//print_instruction(SB);
+	print_instruction(SB);
+	print_instruction(SA);
+	print_instruction(RB);
+	print_instruction(RA);
+	print_instruction(NO);
+	//print_instruction(SS);
+	//print_instruction(SS);
 	return (0);
 }

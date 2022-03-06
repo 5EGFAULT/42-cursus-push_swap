@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:46:33 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 21:59:02 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:29:04 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*clone_int(void *content)
 	tmp = malloc(sizeof(int));
 	if (!tmp)
 		return (NULL);
-	*tmp = (*(int*)content);
+	*tmp = (*(int *)content);
 	return (tmp);
 }
 
@@ -39,17 +39,53 @@ void	*new_int(int content)
 	return (tmp);
 }
 
-void	print_instruction(char *str)
+static void	put_str(short inst)
 {
-	static char	*old_inst;
+	if (inst == NO)
+		return ;
+	if (inst == SA)
+		ft_putstr_fd("sa\n", 1);
+	if (inst == SB)
+		ft_putstr_fd("sb\n", 1);
+	if (inst == SS)
+		ft_putstr_fd("ss\n", 1);
+	if (inst == PA)
+		ft_putstr_fd("pa\n", 1);
+	if (inst == PB)
+		ft_putstr_fd("pb\n", 1);
+	if (inst == RA)
+		ft_putstr_fd("ra\n", 1);
+	if (inst == RB)
+		ft_putstr_fd("rb\n", 1);
+	if (inst == RR)
+		ft_putstr_fd("rr\n", 1);
+	if (inst == RRA)
+		ft_putstr_fd("rra\n", 1);
+	if (inst == RRB)
+		ft_putstr_fd("rrb\n", 1);
+	if (inst == RRR)
+		ft_putstr_fd("rrr\n", 1);
+}
 
-	if (!ft_strncmp(str, "sb", 2) && !ft_strncmp(old_inst, "sa", 2)))
-	if (!ft_strncmp(str, "rb", 2) && !ft_strncmp(old_inst, "ra", 2)))
-	if (!ft_strncmp(str, "rrb", 2) && !ft_strncmp(old_inst, "rra", 2)))
-	if (!ft_strncmp(old_inst, "sb", 2) && !ft_strncmp(str, "sa", 2)))
-	if (!ft_strncmp(old_inst, "rb", 2) && !ft_strncmp(str, "ra", 2)))
-	if (!ft_strncmp(old_inst, "rrb", 2) && !ft_strncmp(str, "rra", 2)))
-		
+void	print_instruction(short inst)
+{
+	static short	p_inst = NO;
 
-	old_inst = str;
+	if ((inst == SA && p_inst == SB) || (inst == SB && p_inst == SA))
+	{
+			p_inst = SS;
+			inst = NO;
+	}
+	else if ((inst == RA && p_inst == RB) || (inst == RB && p_inst == RA))
+	{
+			p_inst = RR;
+			inst = NO;
+	}
+	else if ((inst == RRA && p_inst == RRB) || (inst == RRB && p_inst == RRA))
+	{
+			p_inst = RRR;
+			inst = NO;
+	}
+	put_str(p_inst);
+	p_inst = inst;
 }
