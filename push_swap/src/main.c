@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:25:10 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 18:33:43 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 19:42:14 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,17 @@ int	main(int argc, char **argv)
 	push->a = NULL;
 	push->b = NULL;
 	init_push(argc, argv, push);
-	ft_d_lstiter(push->a, print_content);
-	printf("\n");
+	//ft_d_lstiter(push->a, print_content);
+	//printf("\nAfter\n\n");
 	sort(push);
+	//printf("\n");
 	print_instruction(NO);
-	ft_d_lstiter(push->a, print_content);
+	//printf("\n-------------AAAAAAAAA------\n");
+	//ft_d_lstiter(push->a, print_content);
+
+
+
+	//printf("\n-------------BBBBBB------\n");
+	//ft_d_lstiter(push->b, print_content);
 	return (0);
 }

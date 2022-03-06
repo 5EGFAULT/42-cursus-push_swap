@@ -20,5 +20,5 @@ re: fclean all
 
 test: $(NAME)
 	./$(NAME)  10 25 55 9 1 2 3 4 5 6 7 
-ss: $(NAME)
-	ARG="4 67 3 87 2s3"; ./push_swap $ARG | ./test/checker_Mac $ARG
+#ss: $(NAME)
+#	ARG="4 67 3 87 23"; ./push_swap $ARG | ./test/checker_Mac $ARG
