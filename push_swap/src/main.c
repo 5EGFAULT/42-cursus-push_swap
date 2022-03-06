@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:25:10 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 10:24:24 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:42:00 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,6 @@ int	main(int argc, char **argv)
 	////ft_d_lstiter(push->b, f);
 
 	//print_instruction(SB);
-	print_instruction(SB);
-	print_instruction(SA);
-	print_instruction(RB);
-	print_instruction(RA);
 	print_instruction(NO);
 	//print_instruction(SS);
 	//print_instruction(SS);

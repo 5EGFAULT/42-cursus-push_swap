@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:19:23 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 21:51:35 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/06 10:43:20 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_sa(t_push *push)
 	tmp2->prev = tmp1->prev;
 	tmp1->prev = tmp2;
 	push->a = tmp2;
+	print_instruction(SA);
 }
 
 void	ft_sb(t_push *push)
@@ -42,4 +43,5 @@ void	ft_sb(t_push *push)
 	tmp2->prev = tmp1->prev;
 	tmp1->prev = tmp2;
 	push->b = tmp2;
+	print_instruction(SB);
 }
