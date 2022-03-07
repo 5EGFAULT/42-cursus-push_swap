@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:46:33 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 19:44:01 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:43:51 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,3 @@ void	print_instruction(short inst)
 	put_str(p_inst);
 	p_inst = inst;
 }
-
-

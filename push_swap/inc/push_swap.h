@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 20:59:02 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:26:52 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void		check_duplicate(t_d_list *s);
 void		sort(t_push *push);
 void		sort_3(t_push *push);
 void		sort_10(t_push *push);
+void		sort_100(t_push *push);
 int			is_sorted(t_d_list *s);	
 
 #endif

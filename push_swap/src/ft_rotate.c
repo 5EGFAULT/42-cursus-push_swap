@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:19:17 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 20:08:09 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:46:17 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_ra(t_push *push)
 	t_d_list	*front;
 	t_d_list	*tmp;
 
-	if (ft_d_lstsize( push->a) > 1)
+	if (ft_d_lstsize(push->a) > 1)
 	{
 		front = push->a;
 		tmp = ft_d_lstnew(front->content);
@@ -34,7 +34,7 @@ void	ft_rb(t_push *push)
 	t_d_list	*front;
 	t_d_list	*tmp;
 
-	if (ft_d_lstsize( push->b) > 1)
+	if (ft_d_lstsize(push->b) > 1)
 	{
 		front = push->b;
 		tmp = ft_d_lstnew(front->content);

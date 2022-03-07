@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:50:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 20:00:22 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:45:47 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	print_content(int s)
 
 void	check_duplicate(t_d_list *s)
 {
-	int 		i;
+	int			i;
 	t_d_list	*tmp1;
 	t_d_list	*tmp2;
 

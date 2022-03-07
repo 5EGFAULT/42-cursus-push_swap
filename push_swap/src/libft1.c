@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 14:12:41 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 17:56:16 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:44:52 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	cmpsacks(t_push *push)
 
 	t1 = push->a;
 	t2 = push->b;
-	//system("clear");
+	system("clear");
 	printf("\n");
 	printf("\tA\t|");
 	printf("\tB\t|\n");
@@ -76,5 +76,5 @@ void	cmpsacks(t_push *push)
 		if (t2)
 			t2 = t2->next;
 	}
-// system( "read -n 1 -s -p \"Press any key to continue...\"" );
- }
+	system("read -n 1 -s -p \"Press any key to continue...\"" );
+}
