@@ -6,13 +6,13 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 17:10:09 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/05 18:11:04 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:00:23 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-t_d_list	*ft_d_lstnew(void *content)
+t_d_list	*ft_d_lstnew(int content)
 {
 	t_d_list	*ret;
 

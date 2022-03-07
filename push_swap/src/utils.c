@@ -6,37 +6,20 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:46:33 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 10:42:10 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 19:44:01 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	free_int(void *content)
+void	free_splited(char **s)
 {
-	free(content);
-}
+	int	i;
 
-void	*clone_int(void *content)
-{
-	int		*tmp;
-
-	tmp = malloc(sizeof(int));
-	if (!tmp)
-		return (NULL);
-	*tmp = (*(int *)content);
-	return (tmp);
-}
-
-void	*new_int(int content)
-{
-	int		*tmp;
-
-	tmp = malloc(sizeof(int));
-	if (!tmp)
-		return (NULL);
-	*tmp = content;
-	return (tmp);
+	i = -1;
+	while (s && s[++i])
+		free(s[i]);
+	free(s);
 }
 
 static void	put_str(short inst)
@@ -89,3 +72,5 @@ void	print_instruction(short inst)
 	put_str(p_inst);
 	p_inst = inst;
 }
+
+

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:19:17 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 10:43:05 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:59:01 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 void	ft_ra(t_push *push)
 {
-	t_d_list	*last;
+	t_d_list	*front;
+	t_d_list	*tmp;
 
-	if (push->a && push->a->next)
+	if (ft_d_lstsize( push->a) > 1)
 	{
-		last = ft_d_lstlast(push->a);
-		if (last->prev)
-			last->prev->next = NULL;
-		last->next = push->a;
-		push->a->prev = last;
-		last->prev = NULL;
-		push->a = last;
+		front = push->a;
+		tmp = ft_d_lstnew(front->content);
+		ft_d_lstadd_back(&(push->a), tmp);
+		front->next->prev = NULL;
+		push->a = tmp;
+		ft_d_lstdelone(front);
+		print_instruction(RA);
 	}
-	print_instruction(RA);
 }
 
 void	ft_rb(t_push *push)
 {
-	t_d_list	*last;
+	t_d_list	*front;
+	t_d_list	*tmp;
 
-	if (push->b && push->b->next)
+	if (ft_d_lstsize( push->b) > 1)
 	{
-		last = ft_d_lstlast(push->b);
-		if (last->prev)
-			last->prev->next = NULL;
-		last->next = push->b;
-		push->b->prev = last;
-		last->prev = NULL;
-		push->b = last;
+		front = push->b;
+		tmp = ft_d_lstnew(front->content);
+		ft_d_lstadd_back(&(push->b), tmp);
+		front->next->prev = NULL;
+		push->b = tmp;
+		ft_d_lstdelone(front);
+		print_instruction(RB);
 	}
-	print_instruction(RB);
 }

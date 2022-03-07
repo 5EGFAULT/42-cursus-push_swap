@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:19:23 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 10:43:20 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:43:01 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,24 @@
 
 void	ft_sa(t_push *push)
 {
-	t_d_list	*tmp1;
-	t_d_list	*tmp2;
+	int		tmp1;
 
 	if (ft_d_lstsize(push->a) <= 1)
 		return ;
-	tmp1 = push->a;
-	tmp2 = push->a->next;
-	tmp1->next = tmp2->next;
-	tmp2->next = tmp1;
-	tmp2->prev = tmp1->prev;
-	tmp1->prev = tmp2;
-	push->a = tmp2;
+	tmp1 = push->a->content;
+	push->a->content = push->a->next->content;
+	push->a->next->content = tmp1;
 	print_instruction(SA);
 }
 
 void	ft_sb(t_push *push)
 {
-	t_d_list	*tmp1;
-	t_d_list	*tmp2;
+	int		tmp1;
 
 	if (ft_d_lstsize(push->b) <= 1)
 		return ;
-	tmp1 = push->b;
-	tmp2 = push->b->next;
-	tmp1->next = tmp2->next;
-	tmp2->next = tmp1;
-	tmp2->prev = tmp1->prev;
-	tmp1->prev = tmp2;
-	push->b = tmp2;
+	tmp1 = push->b->content;
+	push->b->content = push->b->next->content;
+	push->b->next->content = tmp1;
 	print_instruction(SB);
 }

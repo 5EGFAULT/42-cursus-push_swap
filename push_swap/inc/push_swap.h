@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 21:09:05 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 19:49:01 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 typedef struct s_d_list
 {
-	void			*content;
+	int		content;
 	struct s_d_list	*next;
 	struct s_d_list	*prev;
 }				t_d_list;
@@ -42,16 +42,18 @@ typedef struct s_push
 
 }				t_push;
 //!			s_d_list_0.c
-t_d_list	*ft_d_lstnew(void *content);
+t_d_list	*ft_d_lstnew(int content);
 void		ft_d_lstadd_front(t_d_list **lst, t_d_list *new);
 int			ft_d_lstsize(t_d_list *lst);
 t_d_list	*ft_d_lstlast(t_d_list *lst);
 void		ft_d_lstadd_back(t_d_list **lst, t_d_list *new);
 //!			s_d_list_1.c
-void		ft_d_lstdelone(t_d_list *lst, void (*del)(void*));
-void		ft_d_lstclear(t_d_list **lst, void (*del)(void*));
-void		ft_d_lstiter(t_d_list *lst, void (*f)(void *));
-void		ft_d_lstdelfront(t_d_list **lst, void (*del)(void*));
+void		ft_d_lstdelone(t_d_list *lst);
+void		ft_d_lstclear(t_d_list **lst);
+void		ft_d_lstiter(t_d_list *lst, void (*f)(int));
+void		ft_d_lstdelfront(t_d_list **lst);
+void		ft_d_lstiter_back(t_d_list *lst, void (*f)(int));
+
 //!			ft_swap.c
 void		ft_sa(t_push *push);
 void		ft_sb(t_push *push);
@@ -65,30 +67,21 @@ void		ft_rb(t_push *push);
 void		ft_rra(t_push *push);
 void		ft_rrb(t_push *push);
 //!			utils.c
-void		free_int(void *content);
-void		*clone_int(void *content);
-void		*new_int(int content);
+void		free_splited(char **s);
 void		print_instruction(short inst);
 //!			libft0.c
 void		ft_putstr_fd(char *s, int fd);
 char		**ft_split(char const *s, char c);
 //!			libft1.c
 int			ft_atoi(const char *str);
+void		cmpsacks(t_push *push);
 //!			init.c
 void		init_push(int count, char **value, t_push *push);
 void		init_stack(t_push *push);
 void		error(void);
-void		print_content(void *s);
+void		print_content(int s);
+void		check_duplicate(t_d_list *s);
 //!			sort.c
 void		sort(t_push *push);
-
-
-
-
-
-
-
-
-
-void	cmpsacks(t_push *push);
+void		sort_3(t_push *push);
 #endif

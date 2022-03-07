@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:19:00 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/06 10:42:27 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:09:09 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,23 @@
 void	ft_pa(t_push *push)
 {
 	t_d_list	*tmp;
-	void		*tmp_content;
 
 	if (ft_d_lstsize(push->b) == 0)
 		return ;
-	tmp_content = clone_int(push->b->content);
-	tmp = ft_d_lstnew(tmp_content);
+	tmp = ft_d_lstnew(push->b->content);
 	ft_d_lstadd_front(&(push->a), tmp);
-	ft_d_lstdelfront(&(push->b), free_int);
+	ft_d_lstdelfront(&(push->b));
 	print_instruction(PA);
 }
 
 void	ft_pb(t_push *push)
 {
 	t_d_list	*tmp;
-	void		*tmp_content;
 
 	if (ft_d_lstsize(push->a) == 0)
 		return ;
-	tmp_content = clone_int(push->a->content);
-	tmp = ft_d_lstnew(tmp_content);
+	tmp = ft_d_lstnew(push->a->content);
 	ft_d_lstadd_front(&(push->b), tmp);
-	ft_d_lstdelfront(&(push->a), free_int);
+	ft_d_lstdelfront(&(push->a));
 	print_instruction(PB);
 }
