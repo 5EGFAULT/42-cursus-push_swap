@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:30:22 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 20:01:44 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:10:20 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,39 @@ int	get_min(t_d_list *s)
 
 void	sort(t_push *push)
 {
-	sort_3(push);
+	if (ft_d_lstsize(push->a) == 2)
+		ft_sa(push);
+	else if (ft_d_lstsize(push->a) == 3)
+		sort_3(push);
+	else if (ft_d_lstsize(push->a) < 10)
+		sort_10(push);
 	print_instruction(NO);
+}
+
+void	sort_10(t_push *push)
+{
+	int	i;
+	int	p;
+
+	while (ft_d_lstsize(push->a) > 3)
+	{
+		p = ft_d_lstsize(push->a) / 2;
+		i = get_index(push->a, get_min(push->a));
+		if (i == 1)
+		{
+			ft_sa(push);
+			ft_pb(push);
+		}
+		else if (i == 0)
+			ft_pb(push);
+		else if (i < p)
+			ft_ra(push);
+		else
+			ft_rra(push);
+	}
+	sort_3(push);
+	while (ft_d_lstsize(push->b))
+		ft_pa(push);
 }
 
 int	is_sorted(t_d_list *s)
