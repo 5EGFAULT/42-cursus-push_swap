@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/08 15:59:50 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:11:34 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 typedef struct s_d_list
 {
-	int		content;
+	int				content;
 	struct s_d_list	*next;
 	struct s_d_list	*prev;
 }				t_d_list;
@@ -92,8 +92,7 @@ int			get_min(t_d_list *s);
 int			get_less(t_d_list *s, int n);
 void		push_to_b_all_under_n(t_push *push, int n);
 int			get_max(t_d_list *s);
-
-
-
+void		sort_left_over(t_push *push, int n);
+void		put_back_to_a(t_push *push);
 int			*sort_stack_k(t_d_list *s);
 #endif
