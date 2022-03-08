@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:34:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 21:37:34 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:01:01 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	sort_100(t_push *push)
 {
-	(void)push;
+	int	i;
+	int	*k;
+
+	k = sort_stack_k(push->a);
+	i = 0;
+	while (i < ft_d_lstsize(push->a))
+		print_content(k[i++]);
 }
 
 void	sort_3(t_push *push)
