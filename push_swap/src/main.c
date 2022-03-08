@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:25:10 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/07 21:08:51 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:26:14 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int	main(int argc, char **argv)
 	//ft_pb(push);
 	//ft_d_lstiter(push->a, print_content);
 	sort(push);
-//printf("\nAfter\n\n");
+	//if (is_sorted(push->a))
+	//	printf("\nAfter\n\n");
+	//printf("\nAfter\n\n");
 	//ft_sa(push);
 	//ft_ra(push);
 	////printf("\n");
