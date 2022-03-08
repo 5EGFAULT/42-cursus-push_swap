@@ -6,17 +6,13 @@ CC:= gcc
 all: $(NAME)
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror  -c $<  -o $@ 
-
 $(NAME):  $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) -g -fsanitize=address 
-#	$(CC) $(OBJ) -o $(NAME) 
 clean:
 	@rm -f $(OBJ)
 fclean: clean
 	@rm -f $(NAME)
-
 re: fclean all
-
 test: $(NAME)
 	./$(NAME) 3 21 11 34 214 114  37 217 115 347 2174 1154 225 64 655 98 45 56 54 564 654 5 464
 #ss: $(NAME)
