@@ -12,7 +12,6 @@ $(NAME):  $(OBJ)
 #	$(CC) $(OBJ) -o $(NAME) 
 clean:
 	@rm -f $(OBJ)
-	@make -C src/libft fclean
 fclean: clean
 	@rm -f $(NAME)
 

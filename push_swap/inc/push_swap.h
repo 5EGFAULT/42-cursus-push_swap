@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/08 18:11:34 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:35:33 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ int			get_max(t_d_list *s);
 void		sort_left_over(t_push *push, int n);
 void		put_back_to_a(t_push *push);
 int			*sort_stack_k(t_d_list *s);
+void		sort_101(t_push *push);
 #endif
