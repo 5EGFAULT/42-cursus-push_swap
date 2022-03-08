@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:30:22 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/08 18:35:02 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:39:52 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,33 @@ int	get_less(t_d_list *s, int n)
 		if (n > front->content)
 			return (i_f);
 		if (n > back->content)
+			return (i_b);
+		front = front->next;
+		back = back->prev;
+		i_b--;
+		i_f++;
+	}
+	return (-1);
+}
+
+int	get_less_2(t_d_list *s, int n, int n2)
+{
+	int			i_b;
+	int			i_f;
+	t_d_list	*front;
+	t_d_list	*back;
+
+	if (!s)
+		exit(2);
+	i_f = 0;
+	i_b = ft_d_lstsize(s) - 1;
+	back = ft_d_lstlast(s);
+	front = s;
+	while (back && front && front->prev != back)
+	{
+		if (n > front->content && n2 < front->content)
+			return (i_f);
+		if (n > back->content && n2 <  back->content)
 			return (i_b);
 		front = front->next;
 		back = back->prev;

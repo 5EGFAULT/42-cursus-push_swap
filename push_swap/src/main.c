@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:25:10 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/08 18:53:20 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:01:43 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	main(int argc, char **argv)
 	init_push(argc, argv, push);
 	if (is_sorted(push->a))
 		return (0);
+	//cmpsacks(push);
 	sort(push);
+	//cmpsacks(push);
 	//system(" read");
 	//system(" leaks  push_swap");
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:34:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/08 18:44:02 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:34:23 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	sort_100(t_push *push)
 
 	k = sort_stack_k(push->a);
 	k_nbr = ft_d_lstsize(push->a) / 4;
-	push_to_b_all_under_n(push, k[k_nbr]);
-	push_to_b_all_under_n(push, k[k_nbr * 2]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr], k[k_nbr * 2]);
+	//push_to_b_all_under_n(push, k[k_nbr]);
+	//push_to_b_all_under_n(push, k[k_nbr * 2]);
 	push_to_b_all_under_n(push, k[k_nbr * 3]);
 	sort_left_over(push, k_nbr * 3);
 	put_back_to_a(push);
