@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 18:05:54 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/08 21:38:42 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/09 09:02:20 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	push_to_b_all_under_n_and_n2(t_push *push, int n, int n2)
 	int	i;
 	int	i1;
 	int	p;
+	int	r;
 
 	while (1)
 	{
@@ -143,25 +144,27 @@ void	push_to_b_all_under_n_and_n2(t_push *push, int n, int n2)
 		i1 = get_less_2(push->a, n2, n);
 		if (i < 0 && i1 < 0)
 			break ;
-		if (i > 0 && i1 < 0)
-			ad_to_b(i, 0, push);
-		else if (i < 0 && i1 > 0)
+		if (i1 < p)
+			r = i1;
+		else
+			r = ft_d_lstsize(push->a) - i1;
+		if (i < 0)
 			ad_to_b(i1, 1, push);
-		else if (i < p && i1 > p && i < ft_d_lstsize(push->a) - i1)
+		else if (i1 < 0)
 			ad_to_b(i, 0, push);
-		else if (i > p && i1 < p && i1 < ft_d_lstsize(push->a) - i)
-			ad_to_b(i1, 1, push);
-		else if (i < p && i1 > p && i > ft_d_lstsize(push->a) - i1)
-			ad_to_b(i1, 1, push);
-		else if (i > p && i1 < p && i1 > ft_d_lstsize(push->a) - i)
-			ad_to_b(i, 0, push);
-		else if (i > p && i1 > p && i < i1)
-			ad_to_b(i1, 1, push);
-		else if (i > p && i1 > p && i > i1)
-			ad_to_b(i, 0, push);
-		else if (i < p && i1 < p && i < i1)
-			ad_to_b(i, 0, push);
-		else if (i < p && i1 < p && i > i1)
-			ad_to_b(i1, 1, push);
+		else if (i < p)
+		{
+			if (i < r)
+				ad_to_b(i, 0, push);
+			else
+				ad_to_b(i1, 1, push);
+		}
+		else
+		{
+			if (ft_d_lstsize(push->a) - i < r)
+				ad_to_b(i, 0, push);
+			else
+				ad_to_b(i1, 1, push);
+		}
 	}	
 }
