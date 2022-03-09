@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:34:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/09 11:07:27 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:20:27 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,19 @@ void	sort_100(t_push *push)
 	int	*k;
 
 	k = sort_stack_k(push->a);
-	k_nbr = ft_d_lstsize(push->a) / 9;
+	k_nbr = ft_d_lstsize(push->a) / 8;
 	push_to_b_all_under_n_and_n2(push, k[k_nbr], k[k_nbr * 2], k[0]);
 	push_to_b_all_under_n_and_n2(push, k[k_nbr * 3], k[k_nbr * 4], k[2]);
 	push_to_b_all_under_n_and_n2(push, k[k_nbr * 5], k[k_nbr * 6], k[4]);
 	push_to_b_all_under_n_and_n2(push, k[k_nbr * 7], k[k_nbr * 8], k[6]);
-	sort_left_over(push, k_nbr * 8);
-	put_back_to_a(push);
+	//push_to_b_all_under_n_and_n3(push, k[k_nbr * 3], k[k_nbr * 5], k[k_nbr * 4] + 1);
+	//push_to_b_all_under_n_and_n3(push, k[k_nbr * 2], k[k_nbr * 6], k[k_nbr * 4]);
+	//push_to_b_all_under_n_and_n3(push, k[k_nbr], k[k_nbr * 7], k[k_nbr * 4]);
+	//push_to_b_all_under_n_and_n3(push, k[0], k[ft_d_lstsize(push->a) - 1], k[k_nbr * 4]);
+	//push_to_b_all_under_n_and_n3(push, k[0], k[ft_d_lstsize(push->a) - 1], k[k_nbr * 4]);
+	//push_to_b_all_under_n(push, k[k_nbr * 7]);
+	//sort_left_over(push, k_nbr * 8);
+	put_back_to_a(push, 0);
 }
 
 void	sort_101(t_push *push)
@@ -42,7 +48,7 @@ void	sort_101(t_push *push)
 	push_to_b_all_under_n_and_n2(push, k[k_nbr * 11], k[k_nbr * 12], k[10]);
 	push_to_b_all_under_n_and_n2(push, k[k_nbr * 13], k[k_nbr * 14], k[12]);
 	sort_left_over(push, k_nbr * 14);
-	put_back_to_a(push);
+	put_back_to_a(push, 0);
 }
 
 void	sort_3(t_push *push)

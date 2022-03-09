@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:30:22 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/09 10:44:23 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/09 13:43:53 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ int	get_min(t_d_list *s)
 	while (s)
 	{
 		if (i > s->content)
+			i = s->content;
+		s = s->next;
+	}
+	return (i);
+}
+
+int	get_max_2(t_d_list *s, int	max)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = s->content;
+	s = s->next;
+	while (s)
+	{
+		if (i < s->content && max > s->content)
 			i = s->content;
 		s = s->next;
 	}
