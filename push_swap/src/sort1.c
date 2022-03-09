@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:34:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/09 09:22:24 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/09 11:07:27 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	sort_100(t_push *push)
 	int	*k;
 
 	k = sort_stack_k(push->a);
-	k_nbr = ft_d_lstsize(push->a) / 4;
-	push_to_b_all_under_n_and_n2(push, k[k_nbr], k[k_nbr * 2]);
-	//push_to_b_all_under_n(push, k[k_nbr]);
-	//push_to_b_all_under_n(push, k[k_nbr * 2]);
-	push_to_b_all_under_n(push, k[k_nbr * 3]);
-	sort_left_over(push, k_nbr * 3);
+	k_nbr = ft_d_lstsize(push->a) / 9;
+	push_to_b_all_under_n_and_n2(push, k[k_nbr], k[k_nbr * 2], k[0]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 3], k[k_nbr * 4], k[2]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 5], k[k_nbr * 6], k[4]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 7], k[k_nbr * 8], k[6]);
+	sort_left_over(push, k_nbr * 8);
 	put_back_to_a(push);
 }
 
@@ -33,15 +33,15 @@ void	sort_101(t_push *push)
 	int	*k;
 
 	k = sort_stack_k(push->a);
-	k_nbr = ft_d_lstsize(push->a) / 8;
-	push_to_b_all_under_n(push, k[k_nbr]);
-	push_to_b_all_under_n(push, k[k_nbr * 2]);
-	push_to_b_all_under_n(push, k[k_nbr * 3]);
-	push_to_b_all_under_n(push, k[k_nbr * 4]);
-	push_to_b_all_under_n(push, k[k_nbr * 5]);
-	push_to_b_all_under_n(push, k[k_nbr * 6]);
-	push_to_b_all_under_n(push, k[k_nbr * 7]);
-	sort_left_over(push, k_nbr * 3);
+	k_nbr = ft_d_lstsize(push->a) / 15;
+	push_to_b_all_under_n_and_n2(push, k[k_nbr], k[k_nbr * 2], k[0]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 3], k[k_nbr * 4], k[2]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 5], k[k_nbr * 6], k[4]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 7], k[k_nbr * 8], k[6]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 9], k[k_nbr * 10], k[8]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 11], k[k_nbr * 12], k[10]);
+	push_to_b_all_under_n_and_n2(push, k[k_nbr * 13], k[k_nbr * 14], k[12]);
+	sort_left_over(push, k_nbr * 14);
 	put_back_to_a(push);
 }
 

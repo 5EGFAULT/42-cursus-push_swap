@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 18:05:54 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/09 09:02:20 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/09 10:06:49 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	ad_to_b(int	i, int r , t_push *push)
 	{
 		ft_sa(push);
 		ft_pb(push);
-		if (r)
+		if (!r)
 			ft_rb(push);
 	}
 	else if (i < p)
@@ -130,7 +130,7 @@ void	ad_to_b(int	i, int r , t_push *push)
 		ft_rra(push);
 }
 
-void	push_to_b_all_under_n_and_n2(t_push *push, int n, int n2)
+void	push_to_b_all_under_n_and_n2(t_push *push, int n, int n2, int n3)
 {
 	int	i;
 	int	i1;
@@ -140,7 +140,7 @@ void	push_to_b_all_under_n_and_n2(t_push *push, int n, int n2)
 	while (1)
 	{
 		p = ft_d_lstsize(push->a) / 2;
-		i = get_less(push->a, n);
+		i = get_less_2(push->a, n, n3);
 		i1 = get_less_2(push->a, n2, n);
 		if (i < 0 && i1 < 0)
 			break ;
