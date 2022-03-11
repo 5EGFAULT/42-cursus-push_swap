@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/10 19:33:30 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:14:10 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ void		sort_10(t_push *push);
 void		sort_100(t_push *push);
 int			is_sorted(t_d_list *s);	
 int			get_index(t_d_list *s, int n);
-int			get_min(t_d_list *s);
-int			get_less(t_d_list *s, int n, int n2);
-int			get_max(t_d_list *s);
-void		sort_left_over(t_push *push, int n);
-void		put_back_to_a(t_push *push);
 int			*sort_stack_k(t_d_list *s);
 void		sort_101(t_push *push);
+
+int			is_sorted_l_h(t_d_list *s, int high, int low);
+void		a_to_b(t_push *push, int low, int high);
+void		b_to_a(t_push *push, int low, int high);
+int			get_at_index(t_d_list *s, int n);
 
 #endif
