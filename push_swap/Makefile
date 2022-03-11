@@ -7,7 +7,7 @@ all: $(NAME)
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror  -c $<  -o $@ 
 $(NAME):  $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME) -fsanitize=address -g
 clean:
 	@rm -f $(OBJ)
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:30:22 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/11 15:25:16 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/11 22:06:58 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	sort(t_push *push)
 		ft_sa(push);
 	else if (ft_d_lstsize(push->a) == 3)
 		sort_3(push);
-	//else if (ft_d_lstsize(push->a) < 10)
-	//	sort_10(push);
+	else if (ft_d_lstsize(push->a) < 10)
+		sort_10(push);
 	else if (ft_d_lstsize(push->a) <= 100)
 		sort_100(push);
 	else

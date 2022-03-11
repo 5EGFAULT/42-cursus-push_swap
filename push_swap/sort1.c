@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:34:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/11 21:11:59 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/11 22:18:36 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	add_to_b(int i, int r, t_push *push)
 	else if (i == 1)
 	{
 		ft_sa(push);
-		//if (r && ft_d_lstsize(push->b) >=2 && push->b->content < push->b->next->content)
-		//	ft_sb(push);
+		if (ft_d_lstsize(push->b) >=2 && push->b->content < push->b->next->content)
+			ft_sb(push);
 		ft_pb(push);
 		if (!r)
 			ft_rb(push);
@@ -42,7 +42,7 @@ int	add_to_a(int i, t_push *push)
 {
 	int	p;
 
-	p = ft_d_lstsize(push->a) / 2;
+	p = ft_d_lstsize(push->b) / 2;
 	if (i == 0)
 	{
 		if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
@@ -52,7 +52,6 @@ int	add_to_a(int i, t_push *push)
 	}
 	else if (i == 1)
 	{
-		//if (push->a && push->a->content < push->b->content)
 		if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
 			ft_sa(push);
 		ft_sb(push);
@@ -66,7 +65,7 @@ int	add_to_a(int i, t_push *push)
 	return (0);
 }
 
-int	get_max(t_d_list *s, int max)
+int	get_max(t_d_list *s, long max)
 {
 	int	i;
 	int	x;
@@ -80,7 +79,7 @@ int	get_max(t_d_list *s, int max)
 	s = s->next;
 	while (s)
 	{
-		if (i < s->content && max != j)
+		if (i < s->content && max > s->content)
 		{
 			i = s->content;
 			x = j;
@@ -88,7 +87,7 @@ int	get_max(t_d_list *s, int max)
 		s = s->next;
 		j++;
 	}
-	return (x);
+	return (i);
 }
 
 int	get_closer(int upper, int lower, t_d_list *s)
@@ -116,7 +115,7 @@ int	get_closer(int upper, int lower, t_d_list *s)
 		return (1);
 }
 
-void put_to_a(t_push *push)
+void put_to_a(t_push *push, int max)
 {
 	int	upper;
 	int	lower;
@@ -125,8 +124,8 @@ void put_to_a(t_push *push)
 	n = 1;
 	while (push->b)
 	{
-		upper = get_max(push->b, -1);
-		lower = get_max(push->b, upper);
+		upper = get_index(push->b, get_max(push->b, max + 1L));
+		lower = get_index(push->b, get_max(push->b, get_max(push->b, max + 1L)));
 		if (upper < 0 && lower < 0)
 			break ;
 		if (n && get_closer(upper , lower, push->b))
@@ -137,9 +136,13 @@ void put_to_a(t_push *push)
 		else
 		{
 			if (add_to_a(upper, push))
+			{
 				n = 1;
+			}
 		}
 	}
+	if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
+		ft_sa(push);
 }
 
 int	get_between(t_d_list *front, int min, int max)
@@ -181,38 +184,38 @@ void	sort_100(t_push *push)
 {
 	int	*k;
 	int s;
-	//int i;
 	int j;
 
 	k = sort_stack_k(push->a);
-	s = 12;
+	s = 16;
 	j = ft_d_lstsize(push->a) - 1;
 	while (j / 2 + s < j && j / 2 - s > 0 )
 	{
-		//printf("/* %d | %d | %d | */\n", j / 2, j / 2 + s, j / 2 - s);
-		//printf("/* %d | %d | %d | */\n\n", k[j / 2], k[j / 2 + s], k[j / 2 - s]);
 		put_to_b(push, k[j / 2 + s], k[j / 2 - s], k[j / 2]);
-		s *= 2;
+		s += s;
 	}
-	//printf("\n/* %d | %d | %d | */\n", k[j / 2], k[j], k[0]);
-	//printf("/* %d | %d | %d | */\n",j / 2,j / 2 + s,j / 2 - s);
 	put_to_b(push, k[j], k[0], k[j / 2]);
-	put_to_a(push);
-	//i = -1;
-	//while (++i < ft_d_lstsize(push->a))
-	//{
-	//	printf(" %d   %d\t",k[i],i);
-	//}
-		
-	//while (ft_d_lstsize(push->a) > 0)
-	//	ft_pb(push);
+	put_to_a(push, k[j]);
+	free(k);
 }
 
 void	sort_101(t_push *push)
 {
 	int	*k;
+	int s;
+	int j;
 
 	k = sort_stack_k(push->a);
+	s = 30;
+	j = ft_d_lstsize(push->a) - 1;
+	while (j / 2 + s < j && j / 2 - s > 0 )
+	{
+		put_to_b(push, k[j / 2 + s], k[j / 2 - s], k[j / 2]);
+		s += s;
+	}
+	put_to_b(push, k[j], k[0], k[j / 2]);
+	put_to_a(push, k[j]);
+	free(k);
 }
 
 void	sort_3(t_push *push)
