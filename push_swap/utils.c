@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:46:33 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/12 21:47:19 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 22:32:20 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,26 +73,25 @@ void	print_instruction(short inst)
 	p_inst = inst;
 }
 
-int		add_to_a(int i, t_push *push)
+int	add_to_a(int i, t_push *push)
 {
 	int	p;
 
+	if (ft_d_lstsize(push->a) >= 2 && (i == 1 || i == 0))
+		if (push->a->content > push->a->next->content)
+			ft_sa(push);
 	p = ft_d_lstsize(push->b) / 2;
 	if (i == 0)
 	{
-		if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
-			ft_sa(push);
 		ft_pa(push);
 		return (1);
 	}
 	else if (i == 1)
 	{
-		if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
-			ft_sa(push);
 		ft_sb(push);
 		ft_pa(push);
 		return (1);
- 	}
+	}
 	else if (i < p)
 		ft_rb(push);
 	else
@@ -100,7 +99,7 @@ int		add_to_a(int i, t_push *push)
 	return (0);
 }
 
-void	put_to_a(t_push *push, int max)
+void	put_to_a(t_push *push, int max, int uppermax)
 {
 	int	upper;
 	int	lower;
@@ -109,23 +108,22 @@ void	put_to_a(t_push *push, int max)
 	n = 1;
 	while (push->b)
 	{
-		upper = get_index(push->b, get_max(push->b, max + 1L));
-		lower = get_index(push->b, get_max(push->b, get_max(push->b, max + 1L)));
+		uppermax = get_max(push->b, max + 1L);
+		upper = get_index(push->b, uppermax);
+		lower = get_index(push->b, get_max(push->b, uppermax));
 		if (upper < 0 && lower < 0)
 			break ;
-		if (n && get_closer(upper , lower, push->b))
+		if (n && get_closer(upper, lower, push->b))
 		{
 			if (add_to_a(lower, push))
-				n = 0;		
+				n = 0;
 		}
 		else
 		{
 			if (add_to_a(upper, push))
-			{
 				n = 1;
-			}
 		}
 	}
-	if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
+	if (ft_d_lstsize(push->a) >= 2 && push->a->content > push->a->next->content)
 		ft_sa(push);
 }

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:25:10 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/11 22:07:39 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 22:34:44 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 		return (1);
 	push->a = NULL;
 	push->b = NULL;
-
 	init_push(argc, argv, push);
 	if (is_sorted(push->a))
 		return (0);

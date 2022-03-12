@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:30:22 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/12 21:50:11 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 22:33:40 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,40 @@
 
 void	sort(t_push *push)
 {
+	int	*k;
+
 	if (ft_d_lstsize(push->a) == 2)
 		ft_sa(push);
 	else if (ft_d_lstsize(push->a) == 3)
 		sort_3(push);
 	else if (ft_d_lstsize(push->a) < 10)
 		sort_10(push);
-	else if (ft_d_lstsize(push->a) <= 100)
-		sort_100(push);
 	else
 	{
-		sort_101(push);
+		k = sort_stack_k(push->a);
+		if (ft_d_lstsize(push->a) <= 100)
+			sort_over(push, 12, k);
+		else
+		{
+			sort_over(push, 30, k);
+		}
 	}
 	print_instruction(NO);
 }
 
-void	sort_100(t_push *push)
+void	put_to_b(t_push *push, int s, int *k)
 {
-	int	*k;
-	int s;
-	int j;
-	int v;
-	int i1;
-	int i2;
+	int	j;
+	int	v;
+	int	i1;
+	int	i2;
 
-	k = sort_stack_k(push->a);
-	s = 12;
 	j = ft_d_lstsize(push->a) - 1;
 	i1 = j / 2 - s;
-	i2 = j /2 + s;
-	while (i2 < j && i1  > 0)
+	i2 = j / 2 + s;
+	while (i2 < j && i1 > 0)
 	{
-		v = 24;
+		v = s * 2;
 		while (v)
 		{
 			if (push->a->content >= k[i1] && push->a->content < k[i2])
@@ -61,57 +63,21 @@ void	sort_100(t_push *push)
 		i1 -= s;
 		i2 += s;
 	}
-
-	while (push->a)
-	{
-		ft_pb(push);
-		if (push->b->content < k[j / 2])
-			ft_rb(push);
-	}
-	put_to_a(push, k[j]);
-	free(k);
 }
 
-void	sort_101(t_push *push)
+void	sort_over(t_push *push, int s, int *k)
 {
-	int	*k;
-	int s;
-	int j;
-	int v;
-	int i1;
-	int i2;
+	int	j;
 
-	k = sort_stack_k(push->a);
-	s = 30;
 	j = ft_d_lstsize(push->a) - 1;
-	i1 = j / 2 - s;
-	i2 = j /2 + s;
-	while (i2 < j && i1  > 0)
-	{
-		v = 60;
-		while (v)
-		{
-			if (push->a->content >= k[i1] && push->a->content < k[i2])
-			{
-				v--;
-				ft_pb(push);
-				if (ft_d_lstsize(push->b) > 1 && push->b->content < k[j / 2])
-					ft_rb(push);
-			}
-			else
-				ft_ra(push);
-		}
-		i1 -= s;
-		i2 += s;
-	}
-
+	put_to_b(push, s, k);
 	while (push->a)
 	{
 		ft_pb(push);
 		if (push->b->content < k[j / 2])
 			ft_rb(push);
 	}
-	put_to_a(push, k[j]);
+	put_to_a(push, k[j], 0);
 	free(k);
 }
 
