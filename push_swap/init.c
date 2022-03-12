@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:50:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/10 19:18:42 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 21:54:42 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ void	error(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(0);
-}
-
-void	print_content(int s)
-{
-	printf("%d\n", s);
 }
 
 void	check_duplicate(t_d_list *s)

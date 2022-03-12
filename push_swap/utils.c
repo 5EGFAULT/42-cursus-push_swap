@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:46:33 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/10 18:47:58 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 21:47:19 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,61 @@ void	print_instruction(short inst)
 	}
 	put_str(p_inst);
 	p_inst = inst;
+}
+
+int		add_to_a(int i, t_push *push)
+{
+	int	p;
+
+	p = ft_d_lstsize(push->b) / 2;
+	if (i == 0)
+	{
+		if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
+			ft_sa(push);
+		ft_pa(push);
+		return (1);
+	}
+	else if (i == 1)
+	{
+		if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
+			ft_sa(push);
+		ft_sb(push);
+		ft_pa(push);
+		return (1);
+ 	}
+	else if (i < p)
+		ft_rb(push);
+	else
+		ft_rrb(push);
+	return (0);
+}
+
+void	put_to_a(t_push *push, int max)
+{
+	int	upper;
+	int	lower;
+	int	n;
+
+	n = 1;
+	while (push->b)
+	{
+		upper = get_index(push->b, get_max(push->b, max + 1L));
+		lower = get_index(push->b, get_max(push->b, get_max(push->b, max + 1L)));
+		if (upper < 0 && lower < 0)
+			break ;
+		if (n && get_closer(upper , lower, push->b))
+		{
+			if (add_to_a(lower, push))
+				n = 0;		
+		}
+		else
+		{
+			if (add_to_a(upper, push))
+			{
+				n = 1;
+			}
+		}
+	}
+	if (ft_d_lstsize(push->a) >=2 && push->a->content > push->a->next->content)
+		ft_sa(push);
 }

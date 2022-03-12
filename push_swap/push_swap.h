@@ -6,14 +6,13 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/11 19:09:11 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 21:51:34 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 
 # define NO		0
@@ -53,7 +52,6 @@ void		ft_d_lstclear(t_d_list **lst);
 void		ft_d_lstiter(t_d_list *lst, void (*f)(int));
 void		ft_d_lstdelfront(t_d_list **lst);
 void		ft_d_lstiter_back(t_d_list *lst, void (*f)(int));
-
 //!			ft_rotate_ft_swap.c
 void		ft_sa(t_push *push);
 void		ft_sb(t_push *push);
@@ -64,9 +62,6 @@ void		ft_rra(t_push *push);
 void		ft_rrb(t_push *push);
 void		ft_pa(t_push *push);
 void		ft_pb(t_push *push);
-//!			utils.c
-void		free_splited(char **s);
-void		print_instruction(short inst);
 //!			libft0.c
 void		ft_putstr_fd(char *s, int fd);
 char		**ft_split(char const *s, char c);
@@ -83,10 +78,18 @@ void		sort(t_push *push);
 void		sort_3(t_push *push);
 void		sort_10(t_push *push);
 void		sort_100(t_push *push);
-int			is_sorted(t_d_list *s);	
-int			get_index(t_d_list *s, int n);
-int			*sort_stack_k(t_d_list *s);
 void		sort_101(t_push *push);
+//!			utils.c
+void		free_splited(char **s);
+void		print_instruction(short inst);
+int			add_to_a(int i, t_push *push);
+void		put_to_a(t_push *push, int max);
+//!			sort_utils.c
+int			is_sorted(t_d_list *s);
+int			get_index(t_d_list *s, int n);
 int			get_min(t_d_list *s);
-
+int			get_max(t_d_list *s, long max);
+int			get_closer(int upper, int lower, t_d_list *s);
+//!			quick_sort_arr.c
+int			*sort_stack_k(t_d_list *s);
 #endif
