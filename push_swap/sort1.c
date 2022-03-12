@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:34:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/12 17:13:25 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 18:14:03 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -396,6 +396,8 @@ void	sort_101(t_push *push)
 	int s;
 	int j;
 	int v;
+	int i1;
+	int i2;
 
 	k = sort_stack_k(push->a);
 	s = 30;
@@ -408,24 +410,27 @@ void	sort_101(t_push *push)
 	//	s += s;
 	//}
 	//put_to_b_101(push, k[j] + 1L, k[0] - 1L, k[j / 2]);
-
-	while (j / 2 + s < j && j / 2 - s > 0)
+	i1 = j / 2 - s;
+	i2 = j /2 + s;
+	while (i2 < j && i1  > 0)
 	{
 		v = 60;
 		while (v)
 		{
-			if (ft_d_lstsize(push->b) > 1 && push->b->content < k[j / 2])
-				ft_rb(push);
-			if (push->a->content >= k[j / 2 - s] && push->a->content < k[j / 2 + s])
+			if (push->a->content >= k[i1] && push->a->content < k[i2])
 			{
 				v--;
 				ft_pb(push);
+				if (ft_d_lstsize(push->b) > 1 && push->b->content < k[j / 2])
+					ft_rb(push);
 				//if (push->b->content < k[j / 2])
 			}
 			else
 				ft_ra(push);
 		}
-		s +=s; 
+		//s +=s; 
+		i1 -= s;
+		i2 += s;
 	}
 
 	while (push->a)
