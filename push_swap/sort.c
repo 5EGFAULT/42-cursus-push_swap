@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:30:22 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/11 22:06:58 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:33:02 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ int	get_index(t_d_list *s, int n)
 	return (i);
 }
 
-int	get_at_index(t_d_list *s, int n)
-{
-	int	i;
+//int	get_at_index(t_d_list *s, int n)
+//{
+//	int	i;
 
-	i = 0;
-	while (s)
-	{
-		if (n == i)
-			return (s->content);
-		s = s->next;
-		i++;
-	}
-	return (i);
-}
+//	i = 0;
+//	while (s)
+//	{
+//		if (n == i)
+//			return (s->content);
+//		s = s->next;
+//		i++;
+//	}
+//	return (i);
+//}
 
 int	get_min(t_d_list *s)
 {

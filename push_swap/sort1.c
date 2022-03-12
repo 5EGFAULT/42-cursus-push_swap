@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:34:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/11 22:28:12 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/12 17:13:25 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,21 +199,244 @@ void	sort_100(t_push *push)
 	free(k);
 }
 
+int	is_sorted_l_h(t_d_list *s, int low, int high)
+{
+	int	i;
+	int	j;
+
+	if (!s)
+		return (1);
+	j = -1;
+	while (++j < low)
+		s = s->next;
+	
+	i = s->content;
+	while (s && j++ <= high)
+	{
+		if (i > s->content)
+			return (0);
+		i = s->content;
+		s = s->next;
+	}
+	return (1);
+}
+
+int	is_sorted_l_h_b(t_d_list *s, int low, int high)
+{
+	int	i;
+	int	j;
+
+	if (!s)
+		return (1);
+	j = -1;
+	while (++j < low)
+		s = s->next;
+	
+	i = s->content;
+	while (s && j++ <= high)
+	{
+		if (i < s->content)
+			return (0);
+		i = s->content;
+		s = s->next;
+	}
+	return (1);
+}
+
+int	get_at_index(t_d_list *s, int idx)
+{
+	int	i;
+
+	if (!s)
+		exit(1);
+	i = 0;
+	while (s && i++ < idx)
+		s = s->next;
+	return (s->content);
+}
+
+int	get_pivot(int *k, int max, int min)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (k[++i] != min)
+		;
+	j = -1;
+	while (k[++j] != max)
+		;
+	if (max == min)
+	{
+		return (max);
+	} 
+	return (k[(j + i) / 2]);
+}
+
+void q_500_b(t_push *push, int *k, int low, int high)
+{
+	int	rotate;
+	int	start;
+	int	p;
+
+	(void)low;
+	if (high < ft_d_lstsize(push->b)  && 0 < high && !is_sorted_l_h_b(push->b, 0, high))
+	{
+		if (ft_d_lstsize(push->b) == 2)
+			ft_sb(push);
+		else
+		{
+			rotate = 0;
+			start = 0;
+			p = get_pivot(k, get_max(push->b, 2147483648), get_min(push->b)) ;
+			while (start++ < high)
+			{
+				if (push->b->content < p)
+				{
+					ft_pa(push);
+				}
+				else
+				{
+					ft_rb(push);
+					rotate++;
+				}
+			}
+			//while (start-- && rotate--)
+			//{
+			//	ft_rra(push);
+			//}
+			//q_500(push, k, 0, ft_d_lstsize(push->a) - 1);	
+		}
+	}
+}
+
+void q_500(t_push *push, int *k, int low, int high)
+{
+	int	rotate;
+	int	start;
+	int	p;
+
+	(void)low;
+	if (high < ft_d_lstsize(push->a)  && 0 < high && !is_sorted_l_h(push->a, 0, high))
+	{
+		if (ft_d_lstsize(push->a) == 2)
+			ft_sa(push);
+		else
+		{
+			rotate = 0;
+			start = 0;
+			p = get_pivot(k, get_max(push->a, get_at_index(push->a, high)), get_min(push->a)) ;
+			while (start++ < high)
+			{
+				if (push->a->content < p)
+				{
+					ft_pb(push);
+				}
+				else
+				{
+					ft_ra(push);
+					rotate++;
+				}
+			}
+			//while (start-- && rotate--)
+			//{
+			//	ft_rra(push);
+			//}
+			//q_500_b(push, k, 0, ft_d_lstsize(push->b) - 1);	
+			q_500(push, k, 0, ft_d_lstsize(push->a) - 1);	
+		}
+	}
+}
+
+void put_to_b_101(t_push *push, long max, long min, int mid)
+{
+	//int	upper;
+	//int	lower;
+
+	//while (push->a)
+	//{
+	//	upper = get_between(push->a, mid, max);
+	//	//lower = get_between(push->a, min, mid);
+	//	if (upper < 0 )
+	//		break ;
+	//	//if (get_closer(upper , lower, push->a))
+	//	//	add_to_b(lower, 0, push);
+	//	//else
+	//		add_to_b(upper, 1, push);
+	//}
+	//while (push->a)
+	//{
+	//	upper = get_between(push->a, mid, max);
+	//	lower = get_between(push->a, min, mid);
+	//	if (lower < 0)
+	//		break ;
+	//	if (get_closer(upper , lower, push->a))
+	//		add_to_b(lower, 0, push);
+	//	else
+	//		add_to_b(upper, 1, push);
+	//}
+	int	rr = 58;
+	while (rr > 0 && push->a)
+	{
+		if (push->a->content >= min && push->a->content < max)
+		{
+			rr--;
+			ft_pb(push);
+			if (push->b->content < mid && ft_d_lstsize(push->b) > 1)
+				ft_rb(push);
+		}
+		else
+			ft_ra(push);
+	}
+}
+
 void	sort_101(t_push *push)
 {
 	int	*k;
 	int s;
 	int j;
+	int v;
 
 	k = sort_stack_k(push->a);
 	s = 30;
 	j = ft_d_lstsize(push->a) - 1;
-	while (j / 2 + s < j && j / 2 - s > 0 )
+	//printf("\n | %d  | \n\n", get_at_index(push->a, j));
+	//q_500(push, k, 0, j);
+	//while (j / 2 + s < j && j / 2 - s > 0 )
+	//{
+	//	put_to_b_101(push, k[j / 2 + s], k[j / 2 - s], k[j / 2]);
+	//	s += s;
+	//}
+	//put_to_b_101(push, k[j] + 1L, k[0] - 1L, k[j / 2]);
+
+	while (j / 2 + s < j && j / 2 - s > 0)
 	{
-		put_to_b(push, k[j / 2 + s], k[j / 2 - s], k[j / 2]);
-		s += s;
+		v = 60;
+		while (v)
+		{
+			if (ft_d_lstsize(push->b) > 1 && push->b->content < k[j / 2])
+				ft_rb(push);
+			if (push->a->content >= k[j / 2 - s] && push->a->content < k[j / 2 + s])
+			{
+				v--;
+				ft_pb(push);
+				//if (push->b->content < k[j / 2])
+			}
+			else
+				ft_ra(push);
+		}
+		s +=s; 
 	}
-	put_to_b(push, k[j], k[0], k[j / 2]);
+
+	while (push->a)
+	{
+		ft_pb(push);
+		//if (push->b->content < k[j / 2] && ft_d_lstsize(push->b) > 1)
+		if (push->b->content < k[j / 2])
+			ft_rb(push);
+	}
+
+	//put_to_b(push, k[j], k[0], k[j / 2]);
 	put_to_a(push, k[j]);
 	free(k);
 }
