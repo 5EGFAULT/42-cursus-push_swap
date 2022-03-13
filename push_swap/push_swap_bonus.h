@@ -6,11 +6,12 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 13:49:49 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 14:52:51 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 15:52:06 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP__BONUS_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 # include <stdlib.h>
 # include <unistd.h>
 # include "./get_next_line_bonus.h"
