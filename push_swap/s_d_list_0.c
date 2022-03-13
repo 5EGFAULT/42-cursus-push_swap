@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 17:10:09 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 13:12:30 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 16:31:23 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_d_list	*ft_d_lstnew(int content)
 
 	ret = (t_d_list *)malloc(sizeof(t_d_list));
 	if (!ret)
-		return (0);
+		exit(15);
 	ret->next = NULL;
 	ret->prev = NULL;
 	ret->content = content;
@@ -71,7 +71,7 @@ void	ft_d_lstadd_back(t_d_list **lst, t_d_list *new)
 	t_d_list	*last;
 
 	if (!new)
-		return ;
+		exit(15);
 	if (*lst)
 	{
 		last = ft_d_lstlast(*lst);

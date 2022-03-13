@@ -6,13 +6,13 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:50:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 13:24:23 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 16:46:24 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_push(int count, char **value, t_push *push)
+int	init_push(int count, char **value, t_push *push)
 {
 	char	**splited;
 	int		i;
@@ -28,6 +28,7 @@ void	init_push(int count, char **value, t_push *push)
 		free_splited(splited);
 	}
 	check_duplicate(push->a);
+	return (1);
 }
 
 void	error(void)

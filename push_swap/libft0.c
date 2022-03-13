@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:30:18 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 13:04:49 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 16:45:43 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,80 +21,67 @@ void	ft_putstr_fd(char *s, int fd)
 		write (fd, s + i, 1);
 }
 
-static void	*ft_memcpy(void *dst, const void *src, size_t n)
+static char	**empty_2d_array(char const *s, char c)
 {
-	size_t	i;
+	int		i;
+	int		len2;
+	char	**splited;
 
 	i = -1;
-	if (!dst && !src)
-		return (NULL);
-	while (++i < n)
+	len2 = 0;
+	while (s[++i])
 	{
-		*((unsigned char *)(dst + i)) = *((unsigned char *)(src + i));
-	}
-	return (dst);
-}
-
-static void	free_ft_split_inter(char ***splited, int j)
-{
-	while (!(*splited)[j - 1])
-	{
-		free((*splited)[j - 1]);
-		if (--j == 0)
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
+			len2++;
+		else
 		{
-			free((*splited));
-			*splited = NULL;
-			return ;
+			if (i == 0 && s[i] != c)
+				len2++;
 		}
 	}
+	splited = (char **)malloc((len2 + 1) * sizeof(char *));
+	return (splited);
 }
 
-static void	ft_split_inter(char ***splited, const char *s, char c)
+static int	fill_2d_array(char const *s, char c, char **splited)
 {
-	int	j;
-	int	d;
 	int	i;
+	int	k;
+	int	j;
 
-	j = 0;
-	d = 0;
-	i = 0;
-	while (*splited && (*splited)[j] && s[d])
+	i = -1;
+	k = -1;
+	while (s[++i])
 	{
-		if (s[d] == c && s[d + 1] != c)
-			i = d + 1;
-		if ((s[d++] != c && s[d] == c) || (s[d - 1] != c && s[d] == '\0'))
+		if (s[i] != c)
 		{
-			(*splited)[j++] = (char *) malloc(d - i + 1);
-			free_ft_split_inter(splited, j);
-			if (!*splited)
-				return ;
-			(*splited)[j - 1] = ft_memcpy((*splited)[j - 1], s + i, d - i);
-			(*splited)[j - 1][d - i] = '\0';
+			j = -1;
+			while (s[i + ++j] && s[i + j] != c)
+				;
+			splited[++k] = (char *)malloc(j + 1);
+			if (!splited[k])
+				return (0);
+			j = -1;
+			while (s[i + ++j] && s[i + j] != c)
+				splited[k][j] = s[i + j];
+			splited[k][j] = '\0';
+			i = i + j -1;
 		}
-	}	
+	}
+	splited[++k] = (char *)0;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**splited;
-	int		i;
-	int		d;
-	int		j;
 
-	i = 0;
-	j = 0;
-	d = 0;
 	if (!s)
-		return (NULL);
-	while (s[d] && s[d] == c)
-		d++;
-	while (s[d])
-		if ((s[d++] != c && s[d] == c) || (s[d - 1] != c && s[d] == '\0'))
-			i++;
-	splited = (char **)malloc((i + 1) * sizeof(char *));
+		return (0);
+	splited = empty_2d_array(s, c);
 	if (!splited)
-		return (NULL);
-	splited[i] = NULL;
-	ft_split_inter(&splited, s, c);
-	return (splited);
+		return ((char **)0);
+	if (fill_2d_array(s, c, splited))
+		return (splited);
+	return ((char **)0);
 }
