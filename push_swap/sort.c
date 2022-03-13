@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:30:22 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/12 22:33:40 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 13:30:24 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	sort(t_push *push)
 {
-	int	*k;
-
 	if (ft_d_lstsize(push->a) == 2)
 		ft_sa(push);
 	else if (ft_d_lstsize(push->a) == 3)
@@ -24,12 +22,11 @@ void	sort(t_push *push)
 		sort_10(push);
 	else
 	{
-		k = sort_stack_k(push->a);
 		if (ft_d_lstsize(push->a) <= 100)
-			sort_over(push, 12, k);
+			sort_over(push, 12);
 		else
 		{
-			sort_over(push, 30, k);
+			sort_over(push, 30);
 		}
 	}
 	print_instruction(NO);
@@ -50,9 +47,8 @@ void	put_to_b(t_push *push, int s, int *k)
 		v = s * 2;
 		while (v)
 		{
-			if (push->a->content >= k[i1] && push->a->content < k[i2])
+			if (push->a->content >= k[i1] && push->a->content < k[i2] && v--)
 			{
-				v--;
 				ft_pb(push);
 				if (ft_d_lstsize(push->b) > 1 && push->b->content < k[j / 2])
 					ft_rb(push);
@@ -65,10 +61,12 @@ void	put_to_b(t_push *push, int s, int *k)
 	}
 }
 
-void	sort_over(t_push *push, int s, int *k)
+void	sort_over(t_push *push, int s)
 {
 	int	j;
+	int	*k;
 
+	k = sort_stack_k(push->a);
 	j = ft_d_lstsize(push->a) - 1;
 	put_to_b(push, s, k);
 	while (push->a)

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:30:18 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/10 18:47:58 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 13:04:49 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	d = 0;
 	if (!s)
-		return (0);
+		return (NULL);
 	while (s[d] && s[d] == c)
 		d++;
 	while (s[d])
@@ -93,7 +93,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 	splited = (char **)malloc((i + 1) * sizeof(char *));
 	if (!splited)
-		return (0);
+		return (NULL);
 	splited[i] = NULL;
 	ft_split_inter(&splited, s, c);
 	return (splited);

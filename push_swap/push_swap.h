@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:32:43 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/12 22:32:14 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 13:31:11 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		check_duplicate(t_d_list *s);
 void		sort(t_push *push);
 void		sort_3(t_push *push);
 void		sort_10(t_push *push);
-void		sort_over(t_push *push, int s, int *k);
+void		sort_over(t_push *push, int s);
 //!			utils.c
 void		free_splited(char **s);
 void		print_instruction(short inst);

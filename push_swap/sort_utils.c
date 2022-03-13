@@ -6,11 +6,12 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 18:05:54 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/12 21:47:09 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 10:08:49 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	is_sorted(t_d_list *s)
 {

@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:50:40 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/12 21:54:42 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/13 13:24:23 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_push(int count, char **value, t_push *push)
 	{
 		splited = ft_split(value[i], ' ');
 		j = -1;
-		while (splited[++j])
+		while (splited && splited[++j])
 			ft_d_lstadd_back(&(push->a), ft_d_lstnew(ft_atoi(splited[j])));
 		free_splited(splited);
 	}
