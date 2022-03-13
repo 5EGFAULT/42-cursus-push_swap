@@ -5,9 +5,9 @@ CC:= gcc
 
 all: $(NAME)
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -g -c $<  -o $@ 
+	$(CC) -Wall -Wextra -Werror -c $<  -o $@ 
 $(NAME):  $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) -fsanitize=address 
+	$(CC) $(OBJ) -o $(NAME)
 clean:
 	@rm -f $(OBJ)
 fclean: clean
