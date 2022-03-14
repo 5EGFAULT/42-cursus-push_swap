@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 14:05:16 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/14 10:06:30 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:19:38 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 void	sort_inter(t_push *push, char *inst)
 {
-	if (ft_strncmp("ss\n", inst, 5) == 0)
+	if (ft_strncmp("ss", inst, 5) == 0)
 	{
 		ft_sa(push);
 		ft_sb(push);
 	}
-	else if (ft_strncmp("rr\n", inst, 5) == 0)
+	else if (ft_strncmp("rr", inst, 5) == 0)
 	{
 		ft_ra(push);
 		ft_rb(push);
 	}
-	else if (ft_strncmp("rrr\n", inst, 5) == 0)
+	else if (ft_strncmp("rrr", inst, 5) == 0)
 	{
 		ft_rra(push);
 		ft_rrb(push);
@@ -53,21 +53,23 @@ void	sort_inter(t_push *push, char *inst)
 
 void	do_sort(t_push *push, char *s)
 {
-	if (ft_strncmp("sa\n", s, 5) == 0)
+	if (s[ft_strlen(s) - 1] == '\n')
+		s[ft_strlen(s) - 1] = '\0';
+	if (ft_strncmp("sa", s, 4) == 0)
 		ft_sa(push);
-	else if (ft_strncmp("sb\n", s, 5) == 0)
+	else if (ft_strncmp("sb", s, 4) == 0)
 		ft_sb(push);
-	else if (ft_strncmp("ra\n", s, 5) == 0)
+	else if (ft_strncmp("ra", s, 4) == 0)
 		ft_ra(push);
-	else if (ft_strncmp("rb\n", s, 5) == 0)
+	else if (ft_strncmp("rb", s, 4) == 0)
 		ft_rb(push);
-	else if (ft_strncmp("pa\n", s, 5) == 0)
+	else if (ft_strncmp("pa", s, 4) == 0)
 		ft_pa(push);
-	else if (ft_strncmp("pb\n", s, 5) == 0)
+	else if (ft_strncmp("pb", s, 4) == 0)
 		ft_pb(push);
-	else if (ft_strncmp("rra\n", s, 5) == 0)
+	else if (ft_strncmp("rra", s, 4) == 0)
 		ft_rra(push);
-	else if (ft_strncmp("rrb\n", s, 5) == 0)
+	else if (ft_strncmp("rrb", s, 4) == 0)
 		ft_rrb(push);
 	else
 		sort_inter(push, s);
@@ -82,7 +84,7 @@ void	sort(t_push *push)
 	s = get_next_line(0);
 	while (s)
 	{
-			do_sort(push, s);
+		do_sort(push, s);
 		free(s);
 		s = get_next_line(0);
 	}

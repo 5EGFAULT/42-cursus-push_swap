@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 10:30:18 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 16:45:43 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:45:03 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static char	**empty_2d_array(char const *s, char c)
 				len2++;
 		}
 	}
+	if (!len2)
+		error();
 	splited = (char **)malloc((len2 + 1) * sizeof(char *));
 	return (splited);
 }
