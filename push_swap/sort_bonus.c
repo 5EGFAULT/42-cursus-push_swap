@@ -6,7 +6,7 @@
 /*   By: asouinia <asouinia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 14:05:16 by asouinia          #+#    #+#             */
-/*   Updated: 2022/03/13 16:01:15 by asouinia         ###   ########.fr       */
+/*   Updated: 2022/03/14 10:06:30 by asouinia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ void	sort(t_push *push)
 	s = get_next_line(0);
 	while (s)
 	{
-		if (ft_strncmp("\n", s, 2) == 0)
-			break ;
-		else
 			do_sort(push, s);
 		free(s);
 		s = get_next_line(0);
